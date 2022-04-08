@@ -1,0 +1,16 @@
+---
+- hosts: ome
+  connection: local
+  name: Fetching ome user facts.
+  gather_facts: False
+
+  collections:
+    - dellemc.openmanage
+
+  tasks:
+    - name: Retrieve basic details of all accounts.
+      ome_user_info:
+        hostname: "{{hostname}}"
+        username: "{{username}}"
+        password: "{{password}}"
+        validate_certs: False
