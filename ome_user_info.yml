@@ -10,7 +10,7 @@
   tasks:
     - name: Retrieve basic details of all accounts.
       ome_user_info:
-        hostname: "{{hostname}}"
-        username: "{{username}}"
+        hostname: "{{inventory_hostname }}"
+        username: "{{user}}"
         password: "{{password}}"
         validate_certs: False
