@@ -13,3 +13,4 @@
         hostname: "{{ inventory_hostname }}"
         username: "{{ user }}"
         password: "{{ password }}"
+        validate_certs: False
