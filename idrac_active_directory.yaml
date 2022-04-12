@@ -1,0 +1,24 @@
+---
+- hosts: idrac
+  connection: local
+  gather_facts: false
+
+  vars:
+    ansible_python_interpreter: python3
+  
+  tasks:
+    - name: Create the SCP file
+      template:
+        src: "{{ scp_ad_config_template }}"
+        dest: "{{ scp_ad_config_file }}"
+      delegate_to: localhost
+
+    - name: Import the SCP file to apply AD configuration
+      idrac_server_config_profile:
+        idrac_ip: "{{ inventory_hostname }}"
+        idrac_user: "{{ user }}"
+        idrac_password: "{{ password }}"
+        command: "import"
+        job_wait: True
+        share_name: "{{ scp_ad_config_file | dirname }}"
+        scp_file: "{{ scp_ad_config_file | basename }}"
