@@ -1,5 +1,7 @@
-- name: Install omsdk and netaddr python packages
-  pip:
-    name: 
-      - omsdk
-      - netaddr>=0.7.19
+- hosts: all 
+  tasks
+    - name: Install omsdk and netaddr python packages
+      pip:
+        name:
+          - omsdk
+          - netaddr>=0.7.19
