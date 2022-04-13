@@ -5,7 +5,6 @@ collections:
     version: 5.2.0
     source: https://galaxy.ansible.com
   # Install a pip dependency.
-  - pip:
-      name: omsdk
-  - pip:
-      name: netaddr
+pip:
+  - name: omsdk
+  - name: netaddr
