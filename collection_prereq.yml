@@ -1,7 +1,7 @@
-- hosts: all 
-  tasks
-    - name: Install omsdk and netaddr python packages
-      pip:
-        name:
-          - omsdk
-          - netaddr>=0.7.19
+- hosts: all
+  tasks:
+  - name: Installing omsdk and netaddr python library using Ansible pip module
+    pip:
+      name: 
+       - omsdk
+       - netaddr>=0.7.19
