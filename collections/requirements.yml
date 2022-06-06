@@ -1,6 +1,0 @@
----
-collections:
-  # Install a dellemc.openmanage collection from Ansible Galaxy.
-  - name: dellemc.openmanage
-    version: 5.4.0
-    source: https://galaxy.ansible.com
