@@ -1,5 +1,7 @@
 - hosts: idrac
   connection: local
+  collections:
+        - dellemc.openmanage
   roles:
     - idrac_export_server_config_profile
   vars:
