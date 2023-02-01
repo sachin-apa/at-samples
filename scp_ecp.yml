@@ -8,5 +8,4 @@
     share_parameters:
       share_name: "/"
       scp_file: export_all.xml
-    scp_components: "ALL"
     export_use: "Clone"
