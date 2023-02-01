@@ -1,0 +1,10 @@
+- hosts: idrac
+  connection: local
+  roles:
+    - idrac_export_server_config_profile
+  vars:
+    share_parameters:
+      share_name: "/root/scp_profiles"
+      scp_file: export_all.xml
+    scp_components: "ALL"
+    export_use: "Clone"
