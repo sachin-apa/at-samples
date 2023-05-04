@@ -6,6 +6,10 @@
     - ../vars_files/credentials.yml
     - ../vars_files/import.yml
   tasks:
+    - name: Print delegate
+      ansible.builtin.debug:
+        msg: "{{ lookup('ansible.builtin.env', 'RUNON', default='localhost') }}"
+    
     - name: Importing the SCP components
       dellemc.openmanage.idrac_server_config_profile:
         idrac_ip: "{{ hostname }}"
