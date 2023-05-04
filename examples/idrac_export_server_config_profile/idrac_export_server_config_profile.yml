@@ -2,7 +2,6 @@
 - name: Export Server configuration profile
   hosts: idrac
   gather_facts: false
-  connection: local
   vars_files:
     - ../vars_files/credentials.yml
     - ../vars_files/export.yml
