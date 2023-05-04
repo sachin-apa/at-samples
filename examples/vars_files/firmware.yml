@@ -1,6 +1,6 @@
 # Role idrac_firmware Vars
-share_name: "{{ repo_url }}/firmware_repo/"
-catalog_file_name: "MyCatalog.xml"
+share_name: "https://downloads.dell.com"
+catalog_file_name: "Catalog.xml"
 reboot: true
 job_wait: true
 apply_update: true
