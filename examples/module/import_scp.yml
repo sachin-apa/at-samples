@@ -20,4 +20,4 @@
         command: "import"
         job_wait: true
       register: idrac_import_server_config_profile_out
-      delegate_to: "localhost"
+      delegate_to: "{{ lookup('ansible.builtin.env', 'RUNON', default='localhost') }}"
