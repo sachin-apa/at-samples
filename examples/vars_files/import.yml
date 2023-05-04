@@ -1,8 +1,8 @@
 share_parameters:
-  share_name: "{{ repo_url }}/scp_share"
+  share_name: "{{ nfs_url }}{{ in_share_loc }}" 
   share_user: "{{ repo_details.username }}"
   share_password: "{{ repo_details.password }}"
-  scp_file: "filename.xml"
+  scp_file: "{{ in_export_scp_file }}"
   proxy_support: false
   proxy_server: "{{ proxy_params.server }}"
   proxy_port: "{{ proxy_params.port }}"
