@@ -8,7 +8,7 @@
   tasks:
     - name: Print delegate
       ansible.builtin.debug:
-        msg: "{{ lookup('ansible.builtin.env', 'RUNON', default='localhost') }}"
+        msg: "{{ lookup('ansible.builtin.env', 'OMAM_RUNON', default='localhost') }}"
     
     - name: Importing the SCP components
       dellemc.openmanage.idrac_server_config_profile:
