@@ -6,21 +6,13 @@
     - ../vars_files/credentials.yml
     - ../vars_files/import.yml
   tasks:
-    - name: Print env variable 1
-      ansible.builtin.debug:
-        msg: "{{ lookup('ansible.builtin.env', 'PATH') or 'localhost' }}"
-
-    - name: Print env variable 2
-      ansible.builtin.debug:
-        msg: "{{ lookup('env', 'PATH') or 'localhost' }}"
-    
     - name: Print env variable 3
       ansible.builtin.debug:
-        msg: "{{ lookup('env', 'RUNON') or 'localhost' }}"
+        msg: "{{ '' if lookup('ansible.builtin.env', 'RUNON') else 'localhost' }}"
 
     - name: Print env variable 4
       ansible.builtin.debug:
-        msg: "{{ lookup('ansible.builtin.env', 'RUNON', default='localhost') }}"  
+        msg: "{{ lookup('ansible.builtin.env', 'RUNON', default='localhost') }}" 
 
     - name: Importing the SCP components
       dellemc.openmanage.idrac_server_config_profile:
