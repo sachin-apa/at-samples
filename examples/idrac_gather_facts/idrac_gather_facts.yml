@@ -7,4 +7,4 @@
   vars:
     target: "System"
   roles:
-    - dellemc.openmanage.idrac_server_powerstate
+    - dellemc.openmanage.idrac_gather_facts
