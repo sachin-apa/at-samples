@@ -12,11 +12,11 @@
 
     - name: Print env variable 2
       ansible.builtin.debug:
-        msg: "{{ lookup('env', 'RUNON') or 'localhost' }}"
+        msg: "{{ lookup('env', 'PATH') or 'localhost' }}"
     
     - name: Print env variable 3
       ansible.builtin.debug:
-        msg: "{{ lookup('ansible.builtin.env', 'PATH', default='localhost') }}"
+        msg: "{{ lookup('env', 'RUNON') or 'localhost' }}"
 
     - name: Print env variable 4
       ansible.builtin.debug:
