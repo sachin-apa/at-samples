@@ -1,0 +1,23 @@
+---
+- name: Import Server configuration profile
+  hosts: idrac
+  gather_facts: false
+  vars_files:
+    - ../vars_files/credentials.yml
+    - ../vars_files/import.yml
+  tasks:
+    - name: Importing the SCP components
+      dellemc.openmanage.idrac_server_config_profile:
+        idrac_ip: "{{ hostname }}"
+        idrac_user: "{{ username }}"
+        idrac_password: "{{ password }}"
+        validate_certs: false
+        share_name: "{{ share_parameters.share_name | default(omit) }}"
+        scp_file: "{{ share_parameters.scp_file | default(omit) }}"
+        share_user: "{{ share_parameters.share_user | default(omit) }}"
+        share_password: "{{ share_parameters.share_password | default(omit) }}"
+        target: "{{ target }}"
+        command: "import"
+        job_wait: true
+      register: idrac_import_server_config_profile_out
+      delegate_to: "localhost"
