@@ -40,3 +40,12 @@
       ansible.builtin.debug:
         msg: "{{ lookup('file', '{{ myfile }}_write') }}"
         
+    - name: Check if iso readable
+      ansible.builtin.stat:
+        path: "/mnt/mymount/rhel-9.2-x86_64-boot.iso"
+      register: source_iso_mount
+
+    - name: Source iso read error
+      ansible.builtin.fail:
+        msg: "Source iso does not exist or is not mounted properly at path {{ src_iso }}"
+      when: not source_iso_mount.stat.exists
