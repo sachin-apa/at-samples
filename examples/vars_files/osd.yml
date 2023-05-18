@@ -1,7 +1,7 @@
 os_name: RHEL
 os_version: 9
 source_iso:
-  path: "{{ nfs_url }}{{ in_share_loc }}/{{ rhel_iso_name}}"
+  path: "/{{ in_share_loc }}/{{ rhel_iso_name}}"
 destination_path:
-  path: "{{ nfs_url }}{{ in_share_loc }}"
+  path: "/{{ in_share_loc }}"
 rhel_rootpw: "{{ rhel_root_pwd }}"
