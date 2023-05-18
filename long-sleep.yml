@@ -6,7 +6,7 @@
 
   vars:
     period: 120
-    myfile: /nfsfileshare/file
+    myfile: {{ my_file}}
 
   tasks:
   
