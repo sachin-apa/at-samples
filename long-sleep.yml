@@ -47,5 +47,5 @@
 
     - name: Source iso read error
       ansible.builtin.fail:
-        msg: "Source iso does not exist or is not mounted properly at path {{ src_iso }}"
+        msg: "Source iso does not exist or is not mounted properly at path"
       when: not source_iso_mount.stat.exists
