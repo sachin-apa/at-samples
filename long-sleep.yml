@@ -42,7 +42,7 @@
         
     - name: Check if iso readable
       ansible.builtin.stat:
-        path: "/mnt/mymount/rhel-9.2-x86_64-boot.iso"
+        path: "/nfsfileshare/rhel-9.2-x86_64-boot.iso"
       register: source_iso_mount
 
     - name: Source iso read error
