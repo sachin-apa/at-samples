@@ -5,6 +5,10 @@
   gather_facts: false
   ignore_errors: true
 
+  vars:
+    period: 120
+    myfile: /nfsfileshare/file
+
   tasks:
     - name: Mounting NFS volume to localhost
       become: true
@@ -15,6 +19,11 @@
         fstype: nfs
         opts: rw,sync,hard
 
+    - name: "I'm feeling real sleepy..."
+      ansible.builtin.wait_for:
+        timeout: "{{ period }}"
+      delegate_to: localhost
+
     - name: Create a voulme mount
       containers.podman.podman_container:
         name: nfs-enabled-elite-app
@@ -22,3 +31,27 @@
         state: started
         mounts:
           - type=bind,source=/nfsfileshare,destination=/nfsfileshare
+
+    - name: "Read pre-existing file..."
+      ansible.builtin.debug:
+        msg: "{{ lookup('file', '{{ myfile }}_read') }}"
+        
+    - name: "Write to a new file..."
+      ansible.builtin.copy:
+        dest: "{{ myfile }}_write"
+        content: |
+          This is the file I've just written to.
+          
+    - name: "Read written out file..."
+      ansible.builtin.debug:
+        msg: "{{ lookup('file', '{{ myfile }}_write') }}"
+        
+    - name: Check if iso readable
+      ansible.builtin.stat:
+        path: "/nfsfileshare/rhel-9.2-x86_64-boot.iso"
+      register: source_iso_mount
+
+    - name: Source iso read error
+      ansible.builtin.fail:
+        msg: "Source iso does not exist or is not mounted properly at path"
+      when: not source_iso_mount.stat.exists
