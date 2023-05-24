@@ -1,0 +1,15 @@
+# vim:ft=ansible:
+---
+- hosts: all
+  gather_facts: false
+  ignore_errors: yes
+
+  tasks:
+    - name: Mounting NFS volume to localhost
+      become: true
+      ansible.posix.mount:
+        src: "{{ src_path }}"
+        path: "{{ local_path }}"
+        state: mounted
+        fstype: nfs
+        opts: rw,sync,hard
