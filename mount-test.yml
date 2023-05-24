@@ -7,7 +7,7 @@
 
   vars:
     period: 120
-    myfile: /nfsfileshare/file
+    myfile: /myshare/file
 
   tasks:
     - name: Mounting NFS volume to localhost
@@ -30,7 +30,7 @@
         image: elite-app:latest
         state: started
         mounts:
-          - type=bind,source=/nfsfileshare,destination=/nfsfileshare
+          - type=bind,source=/nfsfileshare,destination=/myshare
 
     - name: "Read pre-existing file..."
       ansible.builtin.debug:
@@ -48,7 +48,7 @@
         
     - name: Check if iso readable
       ansible.builtin.stat:
-        path: "/nfsfileshare/rhel-9.2-x86_64-boot.iso"
+        path: "/myshare/rhel-9.2-x86_64-boot.iso"
       register: source_iso_mount
 
     - name: Source iso read error
