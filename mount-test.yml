@@ -26,8 +26,8 @@
 
     - name: Create a voulme mount
       containers.podman.podman_container:
-        name: nfs-enabled-elite-app
-        image: elite-app:latest
+        name: nfs-enabled-ee
+        image: quay.io/sachin_apa/dell-openmanage-760:latest
         state: started
         mounts:
           - type=bind,source=/nfsfileshare,destination=/myshare
