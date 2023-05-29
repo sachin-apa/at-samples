@@ -19,16 +19,16 @@
       ansible.builtin.debug:
         msg: "{{ lookup('file', '{{ myfile }}_write') }}"
         
-   - name: Copy custom iso to HTTP or HTTPS share on linux
-     vars:
-      ansible_ssh_pass: "{{ ssh_pass }}"
-      ansible_user: "{{ ssh_user }}"
-      ansible_ssh_user: "{{ ssh_user }}"
-    ansible.builtin.copy:
-      src: "{{ myfile }}_write"
-      dest: "{{ http_path }}"
-      owner: "{{ ssh_user }}"
-      group: "{{ ssh_user }}"
-      mode: "0644"
-    remote_user: "{{ ssh_user }}"
-    delegate_to: "{{ delegate_to_host }}"
+    - name: Copy custom iso to HTTP or HTTPS share on linux
+      vars:
+        ansible_ssh_pass: "{{ ssh_pass }}"
+        ansible_user: "{{ ssh_user }}"
+        ansible_ssh_user: "{{ ssh_user }}"
+      ansible.builtin.copy:
+        src: "{{ myfile }}_write"
+        dest: "{{ http_path }}"
+        owner: "{{ ssh_user }}"
+        group: "{{ ssh_user }}"
+        mode: "0644"
+      remote_user: "{{ ssh_user }}"
+      delegate_to: "{{ delegate_to_host }}"
