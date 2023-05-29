@@ -1,0 +1,34 @@
+# vim:ft=ansible:
+---
+- hosts: all
+  gather_facts: false
+  ignore_errors: yes
+
+  vars:
+    period: 120
+    myfile: /mydata/file
+
+  tasks:     
+    - name: "Write to a new file..."
+      ansible.builtin.copy:
+        dest: "{{ myfile }}_write"
+        content: |
+          This is the file I've just written to.
+          
+    - name: "Read written out file..."
+      ansible.builtin.debug:
+        msg: "{{ lookup('file', '{{ myfile }}_write') }}"
+        
+   - name: Copy custom iso to HTTP or HTTPS share on linux
+     vars:
+      ansible_ssh_pass: "{{ ssh_pass }}"
+      ansible_user: "{{ ssh_user }}"
+      ansible_ssh_user: "{{ ssh_user }}"
+    ansible.builtin.copy:
+      src: "{{ myfile }}_write"
+      dest: "{{ http_path }}"
+      owner: "{{ ssh_user }}"
+      group: "{{ ssh_user }}"
+      mode: "0644"
+    remote_user: "{{ ssh_user }}"
+    delegate_to: "{{ delegate_to_host }}"
