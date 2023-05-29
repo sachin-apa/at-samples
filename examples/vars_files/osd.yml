@@ -1,7 +1,11 @@
 os_name: RHEL
 os_version: 9
 source_iso:
-  path: "/{{ in_share_loc }}/{{ rhel_iso_name}}"
+  path: "{{ repo_url }}/{{ in_share_loc }}/{{ rhel_iso_name}}"
 destination_path:
-  path: "/{{ in_share_loc }}"
+  path: "{{ repo_url }}/{{ in_share_loc }}"
 rhel_rootpw: "{{ rhel_root_pwd }}"
+http_path: "{{ nginx_path }}"
+dest_os: "linux"
+ssh_user: "{{ http_ssh_user }}"
+ssh_pass: "{{ http_ssh_pass }}"
