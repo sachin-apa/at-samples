@@ -7,3 +7,5 @@ destination_path:
 rhel_rootpw: "{{ rhel_root_pwd }}"
 http_path: "{{ nginx_path }}"
 dest_os: "linux"
+ssh_user: "{{ http_ssh_user }}"
+ssh_pass: "{{ http_ssh_pass }}"
