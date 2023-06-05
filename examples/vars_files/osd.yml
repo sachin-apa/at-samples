@@ -1,11 +1,19 @@
-os_name: RHEL
-os_version: 9
-source_iso:
-  path: "{{ repo_url }}/{{ in_share_loc }}/{{ rhel_iso_name}}"
-destination_path:
-  path: "{{ repo_url }}/{{ in_share_loc }}"
-rhel_rootpw: "{{ rhel_root_pwd }}"
-http_path: "{{ nginx_path }}"
-dest_os: "linux"
-ssh_user: "{{ http_ssh_user }}"
-ssh_pass: "{{ http_ssh_pass }}"
+os_name: '{{ inp_os_name }}'
+os_version: '{{ inp_os_version }}'
+source:
+  protocol: '{{ repo_details.proto }}'
+  hostname: '{{ repo_details.ip }}'
+  iso_path: '/{{ http_path }}'
+  iso_name: '{{ inp_iso_name }}'
+  ks_path: '{{ inp_ks_path }}'
+  is_custom_iso: '{{ inp_is_custom_iso }}'
+  username: '{{ repo_details.username }}'
+  password: '{{ repo_details.password }}'
+destination:
+  protocol: '{{ repo_details.proto }}'
+  hostname: '{{ repo_details.ip }}'
+  iso_path: '/{{ http_path }}'
+  mountpoint: '{{ inp_mountpoint }}'
+  os_type: '{{ inp_os_type }}'
+  username: '{{ repo_details.username }}'
+  password: '{{ repo_details.password }}'
