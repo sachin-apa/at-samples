@@ -3,7 +3,7 @@ os_version: '{{ inp_os_version }}'
 source:
   protocol: '{{ repo_details.proto }}'
   hostname: '{{ repo_details.ip }}'
-  iso_path: '/{{ http_path }}'
+  iso_path: '{{ http_path }}'
   iso_name: '{{ inp_iso_name }}'
   ks_path: '{{ inp_ks_path }}'
   is_custom_iso: '{{ inp_is_custom_iso }}'
@@ -12,7 +12,7 @@ source:
 destination:
   protocol: '{{ repo_details.proto }}'
   hostname: '{{ repo_details.ip }}'
-  iso_path: '/{{ http_path }}'
+  iso_path: '{{ http_path }}'
   mountpoint: '{{ inp_mountpoint }}'
   os_type: '{{ inp_os_type }}'
   username: '{{ repo_details.username }}'
