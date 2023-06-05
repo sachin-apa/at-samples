@@ -4,7 +4,5 @@
   gather_facts: false
   vars_files:
     - ../vars_files/credentials.yml
-  vars:
-    target: "System"
   roles:
     - dellemc.openmanage.idrac_gather_facts
