@@ -7,8 +7,8 @@ source:
   iso_name: '{{ inp_iso_name }}'
   # ks_path: '{{ inp_ks_path }}'
   # is_custom_iso: '{{ inp_is_custom_iso }}'
-  # username: '{{ repo_details.username }}'
-  # password: '{{ repo_details.password }}'
+  username: '{{ repo_details.username }}'
+  password: '{{ repo_details.password }}'
 destination:
   protocol: '{{ repo_details.proto }}'
   hostname: '{{ repo_details.ip }}'
