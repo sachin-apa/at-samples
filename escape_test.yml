@@ -13,7 +13,7 @@
       ansible.builtin.set_fact:
         out_string: "{{ out_string | default({}) | combine({item.key: item.value}) }}"
       with_dict:
-        LCStatus: "{{ inp_string | trim | regex_findall('(?<=<n1:LCStatus>).*(?=<\/n1:LCStatus>)') | first }}"
+        LCStatus: "{{ inp_string | trim | regex_findall('(?<=<n1:LCStatus>).*(?=</n1:LCStatus>)') | first }}"
 
     - name: Print Output
       ansible.builtin.debug:
