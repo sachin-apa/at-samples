@@ -1,0 +1,20 @@
+---
+- name: Some Name
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    period: 120
+    myfile: /mydata/file
+    inp_string: '<div class="flex-auto min-width-0 p-2 pr-3 pr-md-2"><n1:LCStatus>Sachin</n1:LCStatus></div>'
+
+  tasks:
+    - name: My Task
+      ansible.builtin.set_fact:
+        out_string: "{{ out_string | default({}) | combine({item.key: item.value}) }}"
+      with_dict:
+        LCStatus: "{{ inp_string | trim | regex_findall('(?<=<n1:LCStatus>).*(?=<\/n1:LCStatus>)') | first }}"
+
+    - name: Print Output
+      ansible.builtin.debug:
+        var: out_string
