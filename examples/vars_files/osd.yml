@@ -12,7 +12,7 @@ source:
 destination:
   protocol: '{{ repo_details.proto }}'
   hostname: '{{ repo_details.ip }}'
-  iso_path: '{{ http_path }}'
+  iso_path: '{{ inp_iso_path }}'
   mountpoint: '{{ inp_mountpoint }}'
   os_type: '{{ inp_os_type }}'
   username: '{{ repo_details.username }}'
