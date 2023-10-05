@@ -1,0 +1,9 @@
+---
+- name: Download Data from http
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Download Data
+      ansible.builtin.command:
+        "wget {{ http_path }} --directory-prefix=. --no-check-certificate"
