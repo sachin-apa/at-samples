@@ -4,5 +4,6 @@ attributes:
   BootSeqRetry: "{{ inp_boot_seq_retry }}"
 apply_time: "Immediate"
 reset_type: "graceful_restart"
+clear_pending: true
 job_wait: true
 job_wait_timeout: 1200
